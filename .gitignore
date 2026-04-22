@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+backend/node_modules/
+projectWork/node_modules/
+
+# Environment variables
+.env
+backend/.env
+projectWork/.env
+
+# Build outputs
+projectWork/dist/
+projectWork/build/
+
+# Editor/OS files
+.vscode/
+.DS_Store
+*.log

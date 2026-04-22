@@ -1,0 +1,196 @@
+/* ========================================
+   AUTH PAGES — Login & Signup (Premium)
+   ======================================== */
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: #000;
+}
+
+.auth-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(229, 9, 20, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(229, 9, 20, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(100, 50, 200, 0.05) 0%, transparent 40%),
+    linear-gradient(180deg, #0a0a0a 0%, #111 50%, #0a0a0a 100%);
+  z-index: 0;
+}
+
+.auth-card {
+  position: relative;
+  z-index: 1;
+  background: rgba(12, 12, 12, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(30px);
+  padding: 48px 52px 40px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+}
+
+.auth-brand-link {
+  text-decoration: none;
+  display: block;
+}
+
+.auth-brand {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-bottom: 32px;
+  text-align: center;
+}
+.auth-brand span {
+  color: #e50914;
+}
+
+.auth-title {
+  color: #fff;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  letter-spacing: -0.3px;
+}
+
+.auth-subtitle {
+  color: #666;
+  font-size: 0.88rem;
+  margin-bottom: 28px;
+}
+
+/* Error Banner */
+.auth-error-banner {
+  background: rgba(229, 9, 20, 0.12);
+  border: 1px solid rgba(229, 9, 20, 0.3);
+  color: #f87171;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+/* Form */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.auth-field {
+  margin-bottom: 18px;
+}
+
+.auth-label {
+  display: block;
+  color: #999;
+  font-size: 0.78rem;
+  font-weight: 500;
+  margin-bottom: 6px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.auth-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.9rem;
+  padding: 13px 16px;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.auth-input:focus {
+  border-color: #e50914;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.1);
+}
+
+.auth-input::placeholder {
+  color: #555;
+  font-size: 0.85rem;
+}
+
+/* Override browser autofill styles */
+.auth-input:-webkit-autofill,
+.auth-input:-webkit-autofill:hover,
+.auth-input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #1a1a1a inset !important;
+  -webkit-text-fill-color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Input error state */
+.auth-input-error {
+  border-color: #e50914 !important;
+  box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.1) !important;
+}
+
+/* Per-field error text */
+.auth-field-error {
+  display: block;
+  color: #f87171;
+  font-size: 0.75rem;
+  margin-top: 6px;
+  padding-left: 2px;
+}
+
+/* Submit button */
+.auth-submit-btn {
+  width: 100%;
+  background: #e50914;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 14px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  letter-spacing: 0.2px;
+}
+
+.auth-submit-btn:hover:not(:disabled) {
+  background: #f40612;
+  box-shadow: 0 4px 20px rgba(229, 9, 20, 0.3);
+  transform: translateY(-1px);
+}
+
+.auth-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Footer */
+.auth-footer {
+  margin-top: 30px;
+  color: #555;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.auth-footer-link {
+  color: #e50914;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-footer-link:hover {
+  text-decoration: underline;
+}
