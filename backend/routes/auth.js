@@ -36,7 +36,7 @@ router.post('/login', async (req, res) => {
     if (!isMatch) return res.status(400).json({ message: "Invalid email or password" });
 
     //secret key
-    const token = jwt.sign({ id: user._id }, "mySuperSecretMovieAppKey123!", { expiresIn: '5d' });
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '5d' });
 
     res.status(200).json({ 
       token: token, 

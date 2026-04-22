@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+require('dotenv').config();
 
 async function verifyToken(req, res, next) {
   const authHeader = req.headers.authorization;
@@ -11,7 +12,7 @@ async function verifyToken(req, res, next) {
   const token = authHeader.split(" ")[1];
   
   try {
-    const decoded = jwt.verify(token, "mySuperSecretMovieAppKey123!");
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     // Attach full user info (id + username) for review creation
     const user = await User.findById(decoded.id).select('username email');
     if (!user) return res.status(404).json({ message: "User not found" });
