@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config';
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
@@ -98,7 +99,7 @@ function Home() {
     try {
       const token = getToken();
       if (!token) { console.error("No token found"); return; }
-      const res = await fetch("http://localhost:5000/api/list/add", {
+      const res = await fetch(`${API_BASE_URL}/api/list/add`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({ movieId: Number(movieId), mediaType, status }),

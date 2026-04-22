@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config';
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../Auth.css";
@@ -35,7 +36,7 @@ function Signup() {
     if (!validate()) return;
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/api/auth/register", {
+      const res = await fetch(`${API_BASE_URL}/api/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username: formData.username, email: formData.email, password: formData.password }),

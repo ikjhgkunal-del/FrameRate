@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config';
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
@@ -106,7 +107,7 @@ const Reels = () => {
       const typeParam = filter && filter !== 'all' ? `&type=${filter}` : '';
       const genreParam = genre && genre !== 'all' ? `&genre=${genre}` : '';
       const response = await axios.get(
-        `http://localhost:5000/api/reels?batch=${batch}${typeParam}${genreParam}`,
+        `${API_BASE_URL}/api/reels?batch=${batch}${typeParam}${genreParam}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       
@@ -298,7 +299,7 @@ const Reels = () => {
   const handleAddToList = async (reel, status) => {
     try {
       const token = getToken();
-      await fetch("http://localhost:5000/api/list/add", {
+      await fetch(`${API_BASE_URL}/api/list/add`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({ movieId: reel.tmdbId, mediaType: reel.mediaType || "movie", status }),

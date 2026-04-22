@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config';
 import { useState, useEffect } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
@@ -83,13 +84,13 @@ function MovieDetails() {
     if (!user || !id) return;
     const token = getToken();
     if (!token) return;
-    fetch(`http://localhost:5000/api/ratings/user/${mediaType}/${id}`, {
+    fetch(`${API_BASE_URL}/api/ratings/user/${mediaType}/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     }).then(r => r.json()).then(d => setUserRating(d.rating)).catch(() => {});
   }, [id, user, mediaType]);
 
   const fetchUserReviews = () => {
-    fetch(`http://localhost:5000/api/reviews/${mediaType}/${id}?sort=${reviewSort}`)
+    fetch(`${API_BASE_URL}/api/reviews/${mediaType}/${id}?sort=${reviewSort}`)
       .then(r => r.json()).then(setUserReviews).catch(() => {});
   };
 
@@ -97,7 +98,7 @@ function MovieDetails() {
     if (!user) { navigate("/login"); return; }
     setUserRating(rating);
     try {
-      await fetch("http://localhost:5000/api/ratings", {
+      await fetch(`${API_BASE_URL}/api/ratings`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${getToken()}` },
         body: JSON.stringify({ movieId: parseInt(id), mediaType, rating }),
@@ -109,7 +110,7 @@ function MovieDetails() {
     if (!user) { navigate("/login"); return; }
     if (!reviewText.trim() || !reviewRating) return;
     try {
-      await fetch("http://localhost:5000/api/reviews", {
+      await fetch(`${API_BASE_URL}/api/reviews`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${getToken()}` },
         body: JSON.stringify({ movieId: parseInt(id), mediaType, rating: reviewRating, content: reviewText, isSpoiler }),
@@ -122,7 +123,7 @@ function MovieDetails() {
   const handleVote = async (reviewId, voteType) => {
     if (!user) { navigate("/login"); return; }
     try {
-      await fetch(`http://localhost:5000/api/reviews/${reviewId}/vote`, {
+      await fetch(`${API_BASE_URL}/api/reviews/${reviewId}/vote`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${getToken()}` },
         body: JSON.stringify({ voteType }),
@@ -136,7 +137,7 @@ function MovieDetails() {
     try {
       const token = getToken();
       if (!token) { console.error("No token"); return; }
-      const res = await fetch("http://localhost:5000/api/list/add", {
+      const res = await fetch(`${API_BASE_URL}/api/list/add`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({ movieId: Number(id), mediaType, status }),

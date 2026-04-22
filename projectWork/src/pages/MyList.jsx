@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../config';
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
@@ -27,7 +28,7 @@ function MyList() {
 
   const fetchWatchlist = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/list/", {
+      const res = await fetch(`${API_BASE_URL}/api/list/`, {
         headers: { Authorization: `Bearer ${getToken()}` },
       });
       const data = await res.json();
@@ -49,7 +50,7 @@ function MyList() {
 
   const updateStatus = async (movieId, mediaType, status) => {
     try {
-      await fetch("http://localhost:5000/api/list/add", {
+      await fetch(`${API_BASE_URL}/api/list/add`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${getToken()}` },
         body: JSON.stringify({ movieId, mediaType, status }),
@@ -60,7 +61,7 @@ function MyList() {
 
   const removeItem = async (movieId, mediaType) => {
     try {
-      await fetch("http://localhost:5000/api/list/remove", {
+      await fetch(`${API_BASE_URL}/api/list/remove`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${getToken()}` },
         body: JSON.stringify({ movieId, mediaType }),
