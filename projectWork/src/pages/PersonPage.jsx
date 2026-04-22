@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import MovieCard from "../components/Moviecard";
 
-const API_KEY = "c0be50e92401d7afda3e846a7357cc5f";
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const BASE = "https://api.themoviedb.org/3";
 const IMG = "https://image.tmdb.org/t/p/w500";
 

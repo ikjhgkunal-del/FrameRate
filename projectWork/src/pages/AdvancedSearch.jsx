@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import MovieCard from "../components/Moviecard";
 
-const API_KEY = "c0be50e92401d7afda3e846a7357cc5f";
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const SORT_OPTIONS = [
   { value: "popularity.desc", label: "Most Popular" },
   { value: "vote_average.desc", label: "Highest Rated" },

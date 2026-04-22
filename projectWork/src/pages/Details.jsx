@@ -4,7 +4,7 @@ import { useAuth } from "../context/AuthContext";
 import MovieCard from "../components/Moviecard";
 import "../Details.css";
 
-const API_KEY = "c0be50e92401d7afda3e846a7357cc5f";
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const BASE = "https://api.themoviedb.org/3";
 const IMG = "https://image.tmdb.org/t/p/original";
 const IMG_SM = "https://image.tmdb.org/t/p/w185";

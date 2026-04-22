@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
-const API_KEY = "c0be50e92401d7afda3e846a7357cc5f";
+const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
 function Header() {
   const location = useLocation();

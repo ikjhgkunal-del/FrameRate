@@ -79,8 +79,8 @@ const Reels = () => {
   // Fetch genres on mount
   useEffect(() => {
     Promise.all([
-      fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=c0be50e92401d7afda3e846a7357cc5f&language=en-US').then(r => r.json()),
-      fetch('https://api.themoviedb.org/3/genre/tv/list?api_key=c0be50e92401d7afda3e846a7357cc5f&language=en-US').then(r => r.json())
+      fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US`).then(r => r.json()),
+      fetch(`https://api.themoviedb.org/3/genre/tv/list?api_key=${import.meta.env.VITE_TMDB_API_KEY}&language=en-US`).then(r => r.json())
     ]).then(([movies, tv]) => {
       const allGenres = [...(movies.genres || []), ...(tv.genres || [])];
       const unique = [];
